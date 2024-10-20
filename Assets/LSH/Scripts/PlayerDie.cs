@@ -13,7 +13,8 @@ public class PlayerDie : MonoBehaviour
     private void Start()
     {
         leftCollider.enabled = true;
-        GameOverUIImage.SetActive(false);
+        GameOverUIImage.SetActive(true);
+        GameOverUIImage.GetComponent<RectTransform>().position = new Vector3(0f, 0f, 27.5f);
     }
 
     //private void OnCollisionEnter(Collision collision)
@@ -29,12 +30,29 @@ public class PlayerDie : MonoBehaviour
     {
         if (other.gameObject.layer == 7)// 7.Spike
         {
+            GameOverUIImage.GetComponent<Animator>().SetTrigger("GameOver"); 
             Debug.Log("트리거 - 플레이어 사망");
-            Time.timeScale = 0f;
-            GameOverUIImage.SetActive(true);
+            StartCoroutine(GameStopRoutine());
+
+
         }
 
     }
 
 
+    IEnumerator GameStopRoutine()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        Time.timeScale = 0f;
+    }
+
+
+
+
+
+
+
 }
+
+
+
