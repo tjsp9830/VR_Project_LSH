@@ -4,25 +4,30 @@ using UnityEngine;
 
 public class DoorOpen : MonoBehaviour
 {
-    [SerializeField] GameObject Door;
+    [SerializeField] Animator DoorUnlock;
     [SerializeField] bool isDoorOpen;
 
+
+    private void Awake()
+    {
+        DoorUnlock = GetComponent<Animator>();
+    }
 
     private void Start()
     {
         isDoorOpen = false;
     }
 
-    private void Update()
+    public void DoorUnlockOpen()
     {
 
-        if (isDoorOpen == false && Input.GetKeyDown(KeyCode.T))
+        if (isDoorOpen == false )
         {
             Debug.Log("문이 열린다");
             isDoorOpen = true;
-            //소리재생
-            //문이 팍!!!!!! 열리는 애니메이션 재생
-            Door.GetComponent<Animator>().SetTrigger("UnLock");
+            // 소리재생 (잠금해제)
+            //심플 그랩으로 문손잡이 잡았다 떼면
+            DoorUnlock.SetTrigger("UnLock");
         }
 
 
