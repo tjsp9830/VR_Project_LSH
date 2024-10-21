@@ -10,7 +10,7 @@ public class CupSocket : MonoBehaviour
     [SerializeField] GameObject CupArea;
     [SerializeField] GameObject CupPos;
 
-    public UnityAction doorUnLock;
+    public UnityAction door1UnLock;
 
     
     public void CupPosIsSocketPos(SelectEnterEventArgs Args)
@@ -20,7 +20,7 @@ public class CupSocket : MonoBehaviour
         if (Args.interactableObject.transform == CupPos.transform) 
         {
             Debug.Log("트롤리 위 컵 갯수가 \n균형을 이뤘다. 문1 잠금 해제");
-            doorUnLock?.Invoke();
+            door1UnLock?.Invoke();
 
         }
 

@@ -17,11 +17,11 @@ public class DoorOpen1 : MonoBehaviour
 
     private void Start()
     {
-        cupSocket.doorUnLock += DoorUnlockSound;
+        cupSocket.door1UnLock += Door1UnlockSound;
         isDoor1Open = false;
     }
 
-    public void DoorUnlockSound()
+    public void Door1UnlockSound()
     {
         if (isDoor1Open == false)
         {

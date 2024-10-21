@@ -642,6 +642,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftCollider: {fileID: 2747034639471032208}
   GameOverUIImage: {fileID: 0}
+  moveScript: {fileID: 0}
+  LeftController: {fileID: 0}
+  RightController: {fileID: 0}
 --- !u!1 &873365927263236186
 GameObject:
   m_ObjectHideFlags: 0

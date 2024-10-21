@@ -8,7 +8,6 @@ public class DoorOpenFake : MonoBehaviour
     [SerializeField] Animator FakeDoorUnlock;
     [SerializeField] bool isDoorOpenFake;
 
-    [SerializeField] CupSocket cupSocket;
 
     private void Awake()
     {
@@ -17,7 +16,6 @@ public class DoorOpenFake : MonoBehaviour
 
     private void Start()
     {
-        cupSocket.doorUnLock += DoorUnlockSound;
         isDoorOpenFake = false;
     }
 
@@ -28,7 +26,7 @@ public class DoorOpenFake : MonoBehaviour
             isDoorOpenFake = true;
 
             // 소리재생 (잠금해제)
-            Debug.Log("문1 잠금해제 사운드");
+            Debug.Log("함정문 잠금해제 사운드");
 
         }
 
@@ -46,7 +44,7 @@ public class DoorOpenFake : MonoBehaviour
             Debug.Log("손잡이를 당겼다 놓자, \n문이 팍 하고 열렸다.");
 
             // 소리재생 (열리는 소리)
-            Debug.Log("문1 팍 열리는 사운드");
+            Debug.Log("함정문이 열리는 사운드");
 
             // 문 열리는 애니메이션 재생
             FakeDoorUnlock.SetTrigger("UnLockFake");
