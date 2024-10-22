@@ -11,6 +11,8 @@ public class PlayerDie : MonoBehaviour
     [SerializeField] SphereCollider leftCollider;
     [SerializeField] GameObject GameOverUIImage;
     [SerializeField] DynamicMoveProvider moveScript;
+    [SerializeField] SnapTurnProviderBase turnAmount;
+    [SerializeField] ContinuousTurnProviderBase turnSpeed;
     [SerializeField] GameObject LeftController;
     [SerializeField] GameObject RightController;
 
@@ -20,6 +22,8 @@ public class PlayerDie : MonoBehaviour
         leftCollider.enabled = true;
         GameOverUIImage.SetActive(false);
         moveScript.moveSpeed = 3f;
+        turnAmount.turnAmount = 45;
+        turnSpeed.turnSpeed = 60;
         LeftController.SetActive(true);
         RightController.SetActive(true);
         //GameOverUIImage.GetComponent<RectTransform>().position = new Vector3(0f, 0f, 27.5f);
@@ -42,7 +46,9 @@ public class PlayerDie : MonoBehaviour
             Debug.Log("트리거 - 플레이어 사망");
             GameOverUIImage.SetActive(true);
             moveScript.moveSpeed = 0f;
-            
+            turnAmount.turnAmount = 0;
+            turnSpeed.turnSpeed = 0;
+
 
             StartCoroutine(GameStopRoutine());
 
