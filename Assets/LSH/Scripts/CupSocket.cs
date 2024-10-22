@@ -9,6 +9,8 @@ public class CupSocket : MonoBehaviour
 
     [SerializeField] GameObject CupArea;
     [SerializeField] GameObject CupPos;
+    [SerializeField] AudioClip SFX_CupPickUp;
+    [SerializeField] AudioClip SFX_CupDrop;
 
     public UnityAction door1UnLock;
 

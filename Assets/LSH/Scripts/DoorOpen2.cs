@@ -8,6 +8,8 @@ public class DoorOpen2 : MonoBehaviour
     [SerializeField] Animator DoorUnlock2;
     [SerializeField] bool isDoor2Open;
     [SerializeField] Masterpiece Door2Event;
+    [SerializeField] AudioClip SFX_GateUnLock;
+    [SerializeField] AudioClip SFX_GateOpen;
 
     private void Awake()
     {
@@ -27,7 +29,7 @@ public class DoorOpen2 : MonoBehaviour
             isDoor2Open = true;
 
             // 소리재생 (잠금해제)
-            Debug.Log("문2 잠금해제 사운드");
+            SoundManager.Instance.PlayOtherSFX(SFX_GateUnLock);
 
         }
 
@@ -45,7 +47,7 @@ public class DoorOpen2 : MonoBehaviour
             Debug.Log("손잡이를 당겼다 놓자, \n문이 팍 하고 열렸다.");
 
             // 소리재생 (열리는 소리)
-            Debug.Log("문2 팍 열리는 사운드");
+            SoundManager.Instance.PlayOtherSFX(SFX_GateOpen);
 
             // 문 열리는 애니메이션 재생
             DoorUnlock2.SetTrigger("UnLock2");

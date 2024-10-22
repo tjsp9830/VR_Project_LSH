@@ -11,6 +11,7 @@ public class Masterpiece : MonoBehaviour
     [SerializeField] private float veiwSeconds;
     public UnityAction TimesUp;
 
+    [SerializeField] AudioClip SFX_JumpSquare;
 
     private void Start()
     {
@@ -22,11 +23,12 @@ public class Masterpiece : MonoBehaviour
     public void MasterPieceCome()
     {
 
-        // 소리재생 (열리는 소리)
-        Debug.Log("명화가 다가오는 사운드");
-
-        // 문 열리는 애니메이션 재생
+        // 그림이 다가오는 애니메이션
         masterPieceCome.SetTrigger("ComeOn");
+
+        // 그림이 다가오니까 놀래줬으면 하는 사운드        
+        SoundManager.Instance.SetOtherSFX(100f, 2f);
+        SoundManager.Instance.PlayOtherSFX(SFX_JumpSquare);
 
         
 
@@ -59,7 +61,7 @@ public class Masterpiece : MonoBehaviour
     {
         while (true)
         {
-            veiwSeconds += 0.1f;
+            veiwSeconds += 0.05f;
 
             if (veiwSeconds >= 100f)
             {
