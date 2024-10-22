@@ -5,14 +5,14 @@ using UnityEngine;
 public class DoorOpen1 : MonoBehaviour
 {
 
-    [SerializeField] Animator DoorUnlock;
+    [SerializeField] Animator DoorUnlock1;
     [SerializeField] bool isDoor1Open;
 
     [SerializeField] CupSocket cupSocket;
 
     private void Awake()
     {
-        DoorUnlock = GetComponent<Animator>();
+        DoorUnlock1 = GetComponent<Animator>();
     }
 
     private void Start()
@@ -35,22 +35,21 @@ public class DoorOpen1 : MonoBehaviour
 
     }
 
-    public void DoorUnlockOpen()
+    public void Door1UnlockOpen()
     {
 
         if (isDoor1Open == false)
             return;
         else 
         {
-            Debug.LogWarning("문손잡이 잡았다 떼면 열려야 하는데 퍼즐 맞추자마자 지멋대로 열림");
-            //심플 그랩으로 문손잡이 잡았다 떼면 ------> 이어야 하는데 퍼즐 맞추자마자 지멋대로 열림
+            //심플 그랩으로 문손잡이 잡았다 떼면 
             Debug.Log("손잡이를 당겼다 놓자, \n문이 팍 하고 열렸다.");
 
             // 소리재생 (열리는 소리)
             Debug.Log("문1 팍 열리는 사운드");
 
             // 문 열리는 애니메이션 재생
-            DoorUnlock.SetTrigger("UnLock1"); 
+            DoorUnlock1.SetTrigger("UnLock1"); 
 
         }
 

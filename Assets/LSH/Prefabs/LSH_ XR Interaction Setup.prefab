@@ -643,6 +643,8 @@ MonoBehaviour:
   leftCollider: {fileID: 2747034639471032208}
   GameOverUIImage: {fileID: 0}
   moveScript: {fileID: 0}
+  turnAmount: {fileID: 0}
+  turnSpeed: {fileID: 0}
   LeftController: {fileID: 0}
   RightController: {fileID: 0}
 --- !u!1 &873365927263236186
