@@ -12,6 +12,8 @@ public class Masterpiece : MonoBehaviour
     public UnityAction TimesUp;
 
     [SerializeField] AudioClip SFX_JumpSquare;
+    [SerializeField] AudioClip SFX_JumpSquareAfter;
+
 
     private void Start()
     {
@@ -22,14 +24,8 @@ public class Masterpiece : MonoBehaviour
 
     public void MasterPieceCome()
     {
-
-        // 그림이 다가오는 애니메이션
-        masterPieceCome.SetTrigger("ComeOn");
-
-        // 그림이 다가오니까 놀래줬으면 하는 사운드        
-        SoundManager.Instance.SetOtherSFX(100f, 2f);
-        SoundManager.Instance.PlayOtherSFX(SFX_JumpSquare);
-
+        if(TriggerOff==false)
+            StartCoroutine(JumpSquartSound(2f));
         
 
     }
@@ -37,6 +33,7 @@ public class Masterpiece : MonoBehaviour
 
     public void ViewStart()
     {
+
         Debug.Log("보기 시작");
         viewMasterPiece = StartCoroutine(ViewMasterPiece());
     }
@@ -45,7 +42,6 @@ public class Masterpiece : MonoBehaviour
     {
         if (TriggerOff == false)
         {
-            Debug.Log("트리거 물체 사라짐");
             TriggerOff = true;
             TriggerObj.SetActive(false);
         }
@@ -55,13 +51,38 @@ public class Masterpiece : MonoBehaviour
     }
 
 
+    IEnumerator JumpSquartSound(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        // 그림이 다가오는 애니메이션
+        masterPieceCome.SetTrigger("ComeOn");
+
+        // 그림이 다가오면서 놀라게끔 나오는 사운드
+        SoundManager.Instance.PlayOtherSFX(SFX_JumpSquare);
+
+        yield return new WaitForSeconds(3f);
+
+        // 진짜 놀랜 플레이어의 숨고르기 사운드
+        SoundManager.Instance.PlayMySFX(SFX_JumpSquareAfter);
+
+        yield return new WaitForSeconds(3f);
+
+        // 그만 쉬기
+        SoundManager.Instance.StopMySFX();
+
+    }
 
 
     public IEnumerator ViewMasterPiece()
     {
+        yield return new WaitForSeconds(3f);
+
         while (true)
         {
-            veiwSeconds += 0.05f;
+            veiwSeconds += 0.1f;
+
+            yield return 0.1f;
 
             if (veiwSeconds >= 100f)
             {

@@ -60,6 +60,29 @@ public class SoundManager : MonoBehaviour
 
 
 
+    public void PlayMySFX(AudioClip clip)
+    {
+        SFX_Me.clip = clip;
+        SFX_Me.Play();
+    }
+
+    public void StopMySFX()
+    {
+        if (SFX_Me.isPlaying == false)
+            return;
+
+        SFX_Me.Stop();
+
+    }
+
+    public void SetMySFX(float volume, float pitch)
+    {
+        SFX_Me.volume = volume;
+        SFX_Me.pitch = pitch;
+    }
+
+
+
     public void PlayOtherSFX(AudioClip clip)
     {
         SFX_Other.clip = clip;
